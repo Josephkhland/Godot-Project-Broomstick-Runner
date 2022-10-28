@@ -1,0 +1,39 @@
+That time I couldn't debug because someone was using my License for ArcGIS Pro, so I decided to just design a cool little game that I will be making in Godot very very soon. 
+
+
+The game is about a Witch that flies around delivering her services.
+
+The game is made up of two parts. First is managing your Witch, Second is flying around destinations in order to make deliveries and complete missions etc. 
+
+First we shall focus on the Flying to Destination part of the game, which is going to be a Runner game. 
+Witch on Broomstick, the game gives you three lanes and you have to switch around them avoiding obstacles and collecting stuff. 
+
+Stuff to include for this: 
+-Player Health Bar.
+-Player Speed
+-Progress Bar 
+-Obstacles{ Parameters: Damage, Slow %, Slow Duration, Weaknesses?, Ghostly?) obstacles like collectibles move at a fixed pace as the Witch progresses. - Weaknesses show the Elements that can affect these Obstacles, all other elements are blocked. - Ghostly means that your Projectiles can fly through it. 
+-Enemies unlike Obstacles, they stay at the far edge of the screen. They shoot projectiles and create obstacles for the player. {Health, Health Regen, Fire Rate, Projectile type, Movement Pattern [Pretty much a queue about moving up or down which plays on repeat])
+-Projectiles {They are a formation of Obstacles, that moves independenly to the main scrolling}
+
+Collectibles
+-Health Orbs
+-Currency 1: Money
+-Currency 2: Something Magic Related.
+-Speed Boost Orbs
+-Special Ingredients : Whatever Special Ingredients might exist in this route. 
+-RARE COLLECTIBLES : One per region - random chance of appearing/ Low - perhaps they have specific prerequisites.
+
+Before flying off, the Witch can prepare her Route, drawing a line from her Hut's position adding as many waypoints as she wants. The length of this line will directly affect the size of the game level that is generated.
+Additional segmentations to the level-> Marking the length at which a region is changed. 
+
+The Witch can decide at what time of the day to start her trip. And the routing tool displays the time it will be required for a trip. 
+
+Quests will expire. 
+Also quests might be done for good or for bad. Moving a Karma Bar. 
+
+Flying for more than 24 hours leads to exhaustion -> Speed is reduced, double health is lost 
+
+Enemies will have a timer that shows how close they are to doing their move? 
+The player will have a gauge that fills up with Currency 2. Each of their skills would use 1,2 or 3 levels of that Gauge. 
+Money can be removed- Bags of money will be added as rare collectibles.
