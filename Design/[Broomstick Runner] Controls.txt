@@ -1,0 +1,13 @@
+===Planning Phase===
+Menus
+
+===Running Phase===
+Vertical Movement (Up/Down) between four lanes. [Default Control :W for UP and S for Down].
+Cast Prepared Spells (Numbers 1,2,3 or 4) || Aim with Mouse and Click to cast Loaded Spell. Right Click to open a popup menu which allows selecting a different action.
+Escape: Pause Menu. Inventory -> Use Consumables
+		  . Spells -> View Spells Details 
+		  . Rest -> Stop at the current point and Start the Resting Phase.
+		  . Map -> Shows the World Map, the Spot where you currently are, the Route you are following, and all available Quests.
+
+===Resting Phase===
+Menus
