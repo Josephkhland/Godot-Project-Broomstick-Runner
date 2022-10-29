@@ -1,0 +1,1 @@
+This folder contains the .tscn files used to load Godot Scenes.

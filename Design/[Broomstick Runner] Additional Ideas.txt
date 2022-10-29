@@ -1,0 +1,13 @@
+This document contains ideas about the game which are considered as secondary. [Potential Stretch Goals for the Kickstarter Campaign)
+
+
+1) Kickstarter Campaign -> If it seems good.
+2) Story Mode -> Have some kind of story. 
+3) Shops -> Allow spending the earned money in order to purchase things from Shops.
+4) Memories Pool -> The player can replay levels through the Memories Pool in their Workshop. (Just store the Level Arrays and in-game time at the moment when those levels were first generated).
+5) Karma Bar -> Have Good Quests, Evil Quests and Neutral Quests, each moving this bar to a different direction. 
+6) Failure Consequences. -> Failing some quests might have more consequences than just not earning the rewards. 
+7) Regional Effect -> Random Winds that push you up or down and can be ignored with the right BROOMSTRICT UPGRADE. 
+8) CUTSCENES
+9) BLACK JACK 
+10) HOOKERS

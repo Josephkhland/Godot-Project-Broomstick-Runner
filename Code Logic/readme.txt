@@ -1,0 +1,1 @@
+This folder contains the script files that are used by the various scenes of the game. It should include both C# Classes files and gdscript files. 

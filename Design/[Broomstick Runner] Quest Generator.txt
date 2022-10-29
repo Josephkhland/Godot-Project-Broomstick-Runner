@@ -1,0 +1,17 @@
+For each Quest that is generated the following Parameters need to be taken into consideration.
+
+Gold Rewards: How much [Currency] is earned upon succesfully completing this quest. 
+Item Rewards: List of {Item,Quantity} rewards. (Perhaps Money can be added here as Bags of Gold)
+Expiration Date: Not completing this quest until this Date marks it as unsuccesful. 
+Item Requirements: Items that must be given away to the Quest Giver in order to complete the quest. 
+Tool Prerequisites: Spells or Items that must be in the Witch's possession in order for the quest to be completed, these are not consumed. 
+Location: Position of the Quest on the World map, the Witch must be within 8 units of Vector Distance of this position in the world map in order to complete it. 
+
+==Brainstorming Segment==
+Quest Generation should also be relevant to the Regions. As in, Forests could generate Gathering Spots from where the Witch could go to gather Herb Ingredients. Towns or Residential locations could offer better monetary rewards. 
+
+Perhaps the Quest could be generated initially using some simple tags: 
+1) Requirements Level {No, Low, High} 
+2) Reward Level {Low, High}.
+3) Urgency Level{ Low, High} 
+====
