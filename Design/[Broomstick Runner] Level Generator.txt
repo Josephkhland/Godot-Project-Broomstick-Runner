@@ -1,0 +1,34 @@
+Given a Line and the points along that line where a new region is entered, it constructs four lists<byte> (One for each lane). Their length calculated relatively to the length of the line.
+
+Every 8 Vector Distance on the map corresponds to a Segment of 16 bytes -> With a limit of 6000 Segments aka 6000*8 = 48000 Vector distance one lane would be using 96 kb.
+
+384 kb for all four lanes. 
+
+Using a Byte we have 256 slots for stuff that can be generated. 
+
+So far we only need 4 bits but we would need to generate our own methods to handle these. So we shall stick with byte(8 bits, 256 slots). 
+0 -> Empty
+1 -> Mana Shard Collectible 
+2 -> Common Obstacle.
+3 -> Health Orb
+4 -> Speed Boost Orb
+5 -> Regional Uncommon Collectible 1
+6 -> Regional Uncommon Collectible 2
+7 -> Regional Uncommon Collectible 3
+8 -> Regional Rare Collectible 1
+9 -> Regional Rare Collectible 2
+10 -> Regional Very Rare Collectible 1
+11 -> Regional Common Enemy 1
+12 -> Regional Common Enemy 2
+13 -> Regional Uncommon Enemy 1
+14 -> Regional Rare Enemy 1
+15 -> Regional Boss.
+
+First we create a Path of Empty tiles from the Start of the Level to the end of the level. 
+The we go to the rest of the tiles and determine whether to place an Obstacle or keep it empty. 
+
+Over the Path, we place segments of Mana Shards. Random Lengths between 3 and 10 shards. With random breaks between them, between 1 and 10. 
+
+For tiles that are Empty or just have a Mana Shard, it is possible that they are replaced by a Health Orb, Speed Boost Orb or a Collectible, each with different chances. 
+
+Per 16 bytes-> Check whether to spawn an enemy. If yes -> Get the first obstacle and change it to enemy. On tiles marked as enemy also place an obstacle. (Start from random lane and iterate through all four lanes until that first obstacle is found).  
