@@ -1,0 +1,10 @@
+{
+
+	"001" : {"name":"player", "expression": "neutral", "text": "Hello! I am Prisma and thank you for taking an interest in my adventure!"},
+	"002" : {"name":"player", "expression": "neutral", "text": "Sadly, due to the lack of the necessary Artistic mentality of my creator, you will have to survive staring at this minimalistic profile of mine."},
+	"003" : {"name":"Creator", "expression": "suicidal", "text": "To get the best experience out of this game, you should put your majestic imagination into use and visualize Prisma-chan as a hot and cute waifu."},
+	"004" : {"name":"player", "expression": "neutral", "text": "Hey stop! You are embarrassing me. If you've got time to waste just keep working on my game!"},
+	"005" : {"name":"Creator", "expression": "suicidal", "text": "You better get into character and start acting already, otherwise no-one will like you, the game will never be finished and you will make no friends!"},
+	"006" : {"name":"player", "expression": "neutral", "text": "You bully..."}
+
+}

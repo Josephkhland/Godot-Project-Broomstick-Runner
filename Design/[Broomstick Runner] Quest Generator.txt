@@ -13,5 +13,10 @@ Quest Generation should also be relevant to the Regions. As in, Forests could ge
 Perhaps the Quest could be generated initially using some simple tags: 
 1) Requirements Level {No, Low, High} 
 2) Reward Level {Low, High}.
-3) Urgency Level{ Low, High} 
+3) Urgency Level{ Low, High}
+
+Low Requirements Level would generate Quests that don't require lot of Items/Tools in order to be completed. High Requirements would generate Quests that require more things, and it might be programmatically fixed that they ask for an item/tool that the Witch doesn't currently have. 
+Perhaps Asking for something that's marked as Rare could be a higher requirement level.
+
+Reward Levels -> Mostly give away "Uncommon"   
 ====
