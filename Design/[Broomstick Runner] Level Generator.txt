@@ -32,3 +32,13 @@ Over the Path, we place segments of Mana Shards. Random Lengths between 3 and 10
 For tiles that are Empty or just have a Mana Shard, it is possible that they are replaced by a Health Orb, Speed Boost Orb or a Collectible, each with different chances. 
 
 Per 16 bytes-> Check whether to spawn an enemy. If yes -> Get the first obstacle and change it to enemy. On tiles marked as enemy also place an obstacle. (Start from random lane and iterate through all four lanes until that first obstacle is found).  
+
+Chance of Enemy Spawining: 1% -> 10/1000 -> 100/10000
+Chance of Collectible Spawning: 1/1000 -> 10/10000
+Chance of Health Orb or Speed Orb Spawning: 1 per 50 -> 2% -> 200/10000
+Chance of Empty or Obstacle -> 96.9% -> 9690 /10000 -> With an additional Ratio of Empty/Obstacle given by the Region (Default 1:1) 
+
+
+###
+Prior to the Level Generation, we will need to Grab the Line2D that the witch created for her route. 
+Iterate that Line in segments of 8 (Vector Distance). Check which Region the Iterated Point befalls in. If it's the same as the previous one continue, otherwise add a new RegionsOrderStruct.
