@@ -35,12 +35,8 @@ public class LevelGenerator : Node
         Forward
     }
 
-    private struct RegionsOrderStruct
-    {
-        public int RegionID;
-        public int StartingIndex;
-    }
-    private List<RegionsOrderStruct> RegionsOrder= new List<RegionsOrderStruct>();
+    
+    private List<Utilities.RegionsOrderStruct> RegionsOrder= new List<Utilities.RegionsOrderStruct>();
     private int LevelLength = 16; //Number of Bytes per Level Lane. This Size is calculated by dividing the Vector Distance of the Line by 8 and multiplying it by 16. (Or just multiplying it by two and flooring it).
 
     [Export]
@@ -54,6 +50,9 @@ public class LevelGenerator : Node
     {
         MaxArraySize = MaxLevelSize * 2;
     }
+
+    //Regions Order
+    
 
     //Generate Lanes
     public void GenerateLanes()

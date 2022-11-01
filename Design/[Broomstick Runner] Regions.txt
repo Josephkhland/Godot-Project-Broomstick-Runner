@@ -1,0 +1,18 @@
+ID:
+Name:
+Polygon:
+Uncommon Collectible 1: (id)
+Uncommon Collectible 2: (id)
+Uncommon Collectible 3: (id)
+Rare Collectible 1: (id)
+Rare Collectible 2: (id)
+Very Rare Collectible 1: (id)
+Common Enemy 1: (id)
+Common Enemy 2: (id)
+Uncommon Enemy 1: (id)
+Rare Enemy 1: (id)
+Boss:(id)
+
+==Functions== 
+PointIsInRegion(Vector2 Point)
+DistanceFromRegion(Vector2 Point)

@@ -1,0 +1,6 @@
+These functions will be written in a Singleton class and they should be accessible throughout the code.
+
+GetPointAlongLine(PoolVector2DArray Polyline, double DistanceAlongLine):
+ -Find between which two Points of the Polyline the given distance is. 
+ -Then remove the distance of the previous point to the start and find the Distance From Previous Point.
+ -In a straight line from the previous point to the next point, with a length equal to the Distance left {DistanceAlongLine-DistanceFromPreviousPoint}

@@ -22,5 +22,8 @@ polygon = PoolVector2Array( 142, 220, 208, 331, 425, 337, 452, 246, 399, 239, 32
 position = Vector2( 227, -61 )
 polygon = PoolVector2Array( 261, 381, 187, 337, 191, 190, 403, 197, 353, 316, 436, 373, 394, 400 )
 
+[node name="Route" type="Line2D" parent="."]
+points = PoolVector2Array( 360, 364, 300, 335, 265, 312, 276, 244, 331, 272, 344, 298, 360, 322, 414, 356, 448, 356, 473, 337, 502, 301, 500, 266, 485, 251, 460, 249, 439, 227, 437, 194, 459, 170, 483, 157, 523, 170, 553, 179, 577, 165 )
+
 [node name="MapBorder" type="Line2D" parent="."]
 points = PoolVector2Array( 0, 0, 720, 0, 720, 460, 0, 460, 0, 0 )
