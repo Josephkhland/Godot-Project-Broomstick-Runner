@@ -3,7 +3,7 @@ extends Node2D
 
 
 # Declare member variables here. Examples:
-export var MapRectangle = Rect2(0,0,720,460) setget _set_rectangle
+export onready var MapRectangle = Rect2(0,0,720,460) setget _set_rectangle
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

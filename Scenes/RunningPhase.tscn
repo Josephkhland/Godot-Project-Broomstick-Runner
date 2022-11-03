@@ -1,0 +1,70 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Code Logic/Guidelines.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/PlayerPositions.gd" type="Script" id=2]
+[ext_resource path="res://Objects/RunnerPlayer.tscn" type="PackedScene" id=3]
+
+[node name="Level" type="Node2D"]
+
+[node name="Camera" type="Camera2D" parent="."]
+anchor_mode = 0
+current = true
+
+[node name="Guidelines" type="Node2D" parent="."]
+script = ExtResource( 1 )
+
+[node name="GuidelineOne" type="Line2D" parent="Guidelines"]
+points = PoolVector2Array( 0, 120, 1025, 120 )
+width = 4.0
+default_color = Color( 0.67451, 0, 0.6, 1 )
+
+[node name="GuidelineTwo" type="Line2D" parent="Guidelines"]
+points = PoolVector2Array( 0, 216, 1025, 216 )
+width = 2.0
+default_color = Color( 0.67451, 0, 0.6, 1 )
+
+[node name="GuidelineThree" type="Line2D" parent="Guidelines"]
+points = PoolVector2Array( 0, 312, 1025, 312 )
+width = 2.0
+default_color = Color( 0.67451, 0, 0.6, 1 )
+
+[node name="GuidelineFour" type="Line2D" parent="Guidelines"]
+points = PoolVector2Array( 0, 408, 1025, 408 )
+width = 2.0
+default_color = Color( 0.67451, 0, 0.6, 1 )
+
+[node name="GuidelineFive" type="Line2D" parent="Guidelines"]
+points = PoolVector2Array( 0, 504, 1025, 504 )
+width = 4.0
+default_color = Color( 0.67451, 0, 0.6, 1 )
+
+[node name="Spawners" type="Node2D" parent="."]
+
+[node name="Lane1Spawn" type="Position2D" parent="Spawners"]
+position = Vector2( 1150, 168 )
+
+[node name="Lane2Spawn" type="Position2D" parent="Spawners"]
+position = Vector2( 1150, 264 )
+
+[node name="Lane3Spawn" type="Position2D" parent="Spawners"]
+position = Vector2( 1150, 360 )
+
+[node name="Lane4Spawn" type="Position2D" parent="Spawners"]
+position = Vector2( 1150, 456 )
+
+[node name="PlayerPositions" type="Node2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="Lane1Spot" type="Position2D" parent="PlayerPositions"]
+position = Vector2( 384, 168 )
+
+[node name="Lane2Spot" type="Position2D" parent="PlayerPositions"]
+position = Vector2( 384, 264 )
+
+[node name="Lane3Spot" type="Position2D" parent="PlayerPositions"]
+position = Vector2( 384, 360 )
+
+[node name="Lane4Spot" type="Position2D" parent="PlayerPositions"]
+position = Vector2( 384, 456 )
+
+[node name="RunnerPlayer" parent="." instance=ExtResource( 3 )]
