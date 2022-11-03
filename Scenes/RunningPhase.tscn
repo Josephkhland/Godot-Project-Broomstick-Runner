@@ -12,6 +12,8 @@ script = ExtResource( 5 )
 anchor_mode = 0
 current = true
 
+[node name="GeneratedObjects" type="Node2D" parent="."]
+
 [node name="Guidelines" type="Node2D" parent="."]
 script = ExtResource( 1 )
 
