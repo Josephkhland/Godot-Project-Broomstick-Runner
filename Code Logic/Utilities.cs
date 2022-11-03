@@ -8,6 +8,7 @@ public class Utilities : Node
 {
     // Declare member variables here. Examples:
     float MaxSeparationDistance = 16;
+    LevelGeneratorData CurrentLevelSeed;
     #region Structs
 
     public struct Polyline
@@ -102,6 +103,28 @@ public class Utilities : Node
             LevelLength = (int) Math.Floor(polyline.Length*2);
             this.RegionsOrder = new List<RegionsOrderStruct>(RegionsOrder);
         }
+    }
+
+    public enum TileContent : byte
+    {
+        Unitialized,
+        Empty,
+        ManaShard,
+        Obstacle,
+        HealthOrb,
+        SpeedOrb,
+        UncommonCollectible1,
+        UncommonCollectible2,
+        UncommonCollectible3,
+        RareCollectible1,
+        RareCollectible2,
+        VeryRareCollectible,
+        CommonEnemy1,
+        CommonEnemy2,
+        UncommonEnemy,
+        RareEnemy,
+        BossEnemy
+
     }
 
     #endregion
@@ -245,7 +268,7 @@ public class Utilities : Node
         return newRegionID;
     }
 
-    public LevelGeneratorData FindLevelGeneratorData(Line2D route)
+    public void FindLevelGeneratorData(Line2D route)
     {
         List<Vector2> TransformedPoints = new List<Vector2>();
         foreach (Vector2 Point in route.Points)
@@ -280,7 +303,12 @@ public class Utilities : Node
             StepsCounter++;
         }
         LevelGeneratorData level_seed = new LevelGeneratorData(polyline, OutputList);
-        return level_seed;
+        CurrentLevelSeed = level_seed;
+    }
+
+    public LevelGeneratorData GetCurrentLevelSeed()
+    {
+        return CurrentLevelSeed;
     }
     //  // Called every frame. 'delta' is the elapsed time since the previous frame.
     //  public override void _Process(float delta)

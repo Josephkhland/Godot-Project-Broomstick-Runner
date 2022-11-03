@@ -13,7 +13,7 @@ public class RunnerPlayer : KinematicBody2D
     Vector2 CurrentPosition;
     Vector2 NextPosition;
     [Export]
-    int Speed = 300;
+    int Speed = 600;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -54,7 +54,7 @@ public class RunnerPlayer : KinematicBody2D
             else
             {
                 //Move up
-                GD.Print("UP");
+                //GD.Print("UP");
                 InMotion = true;
                 CurrentPosition = AvailablePositions[position_index].Position;
                 NextPosition = AvailablePositions[position_index - 1].Position;
@@ -67,7 +67,7 @@ public class RunnerPlayer : KinematicBody2D
             else
             {
                 //Move Down
-                GD.Print("DOWN");
+                //GD.Print("DOWN");
                 InMotion = true;
                 CurrentPosition = AvailablePositions[position_index].Position;
                 NextPosition = AvailablePositions[position_index + 1].Position;

@@ -6,27 +6,7 @@ public class LevelGenerator : Node
 {
     // Declare member variables here. Examples:
 
-    enum TileContent : byte
-    {
-        Unitialized,
-        Empty,
-        ManaShard,
-        Obstacle,
-        HealthOrb,
-        SpeedOrb,
-        UncommonCollectible1,
-        UncommonCollectible2,
-        UncommonCollectible3,
-        RareCollectible1,
-        RareCollectible2,
-        VeryRareCollectible,
-        CommonEnemy1,
-        CommonEnemy2,
-        UncommonEnemy,
-        RareEnemy,
-        BossEnemy
-
-    }
+    
 
     enum MovementOptions
     {
@@ -37,13 +17,13 @@ public class LevelGenerator : Node
 
     
     private List<Utilities.RegionsOrderStruct> RegionsOrder= new List<Utilities.RegionsOrderStruct>();
-    private int LevelLength = 16; //Number of Bytes per Level Lane. This Size is calculated by dividing the Vector Distance of the Line by 8 and multiplying it by 16. (Or just multiplying it by two and flooring it).
+    private int LevelLength = 48000; //Number of Bytes per Level Lane. This Size is calculated by dividing the Vector Distance of the Line by 8 and multiplying it by 16. (Or just multiplying it by two and flooring it).
 
     [Export]
     public int MaxLevelSize = 48000; 
     private int MaxArraySize = 96000; //96 kb -> Reached for Vector Distance 48000.
 
-    Dictionary<int, byte[]> Lanes = new Dictionary<int, byte[]>();
+    public Dictionary<int, byte[]> Lanes = new Dictionary<int, byte[]>();
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -52,7 +32,11 @@ public class LevelGenerator : Node
     }
 
     //Regions Order
-    
+    public void AddLevelGenerationSeed(Utilities.LevelGeneratorData level_seed)
+    {
+        LevelLength = level_seed.LevelLength;
+        RegionsOrder = level_seed.RegionsOrder;
+    }
 
     //Generate Lanes
     public void GenerateLanes()
@@ -102,12 +86,12 @@ public class LevelGenerator : Node
         while (CurrentTile < LevelLength - 1)
         {
             //Set the CurrentTile,Lane as Empty
-            Lanes[CurrentLane][CurrentTile] = (byte)TileContent.Empty;
+            Lanes[CurrentLane][CurrentTile] = (byte)Utilities.TileContent.Empty;
             
             //Depending on the Mana Placement Parameters set a Mana Shard on the current Tile or leave it empty.
             if (ManaPlacementOn)
             {
-                Lanes[CurrentLane][CurrentTile] = (byte)TileContent.ManaShard;
+                Lanes[CurrentLane][CurrentTile] = (byte)Utilities.TileContent.ManaShard;
             }
 
             //Mana is placed in Bands, each Band of Mana Shards has a Gap between it and the previous Band of Mana Shards.
@@ -195,7 +179,7 @@ public class LevelGenerator : Node
         
         for (int CurrentTile = 0; CurrentTile < LevelLength; CurrentTile++)
         {
-            if (CurrentRegionIndex != RegionsOrder.Count - 1)
+            if (CurrentRegionIndex != RegionsOrder.Count - 1 && RegionsOrder.Count >0)
             {
                 if (CurrentTile == RegionsOrder[CurrentRegionIndex + 1].StartingIndex)
                     CurrentRegionIndex++;
@@ -203,7 +187,7 @@ public class LevelGenerator : Node
             for (int CurrentLane = 0; CurrentLane < 4; CurrentLane++)
             {
                 int d10000Result = random.Next(10000);
-                if (Lanes[CurrentLane][CurrentTile] == (byte)TileContent.Unitialized)
+                if (Lanes[CurrentLane][CurrentTile] == (byte)Utilities.TileContent.Unitialized)
                 {
                     //Anything can be assigned here.
                     //Empty tiles and Obstacles should have the highest chance. Followed by a small chance of Mana Shards or Orbs.
@@ -212,38 +196,38 @@ public class LevelGenerator : Node
                     {
                         //Place Obstacles or leave Empty (with a chance to have mana shards in empty tiles).
                         int d10Result = random.Next(10);
-                        if (d10Result < 3) Lanes[CurrentLane][CurrentTile] = (byte)TileContent.Empty;
-                        else if (d10Result < 5) Lanes[CurrentLane][CurrentTile] = (byte)TileContent.ManaShard;
-                        else Lanes[CurrentLane][CurrentTile] = (byte)TileContent.Obstacle;
+                        if (d10Result < 3) Lanes[CurrentLane][CurrentTile] = (byte)Utilities.TileContent.Empty;
+                        else if (d10Result < 5) Lanes[CurrentLane][CurrentTile] = (byte)Utilities.TileContent.ManaShard;
+                        else Lanes[CurrentLane][CurrentTile] = (byte)Utilities.TileContent.Obstacle;
                     }
                     else if( d10000Result >= EmptyOrObstacleChances && d10000Result < EmptyOrObstacleChances + OrbsChances)
                     {
                         //Place Orbs.
                         int d10Result = random.Next(10);
-                        if (d10Result < 5) Lanes[CurrentLane][CurrentTile] = (byte)TileContent.HealthOrb;
-                        else Lanes[CurrentLane][CurrentTile] = (byte)TileContent.SpeedOrb;
+                        if (d10Result < 5) Lanes[CurrentLane][CurrentTile] = (byte)Utilities.TileContent.HealthOrb;
+                        else Lanes[CurrentLane][CurrentTile] = (byte)Utilities.TileContent.SpeedOrb;
                     }
                     else if (d10000Result >= EmptyOrObstacleChances + OrbsChances && d10000Result < EmptyOrObstacleChances + OrbsChances + EnemiesChances)
                     {
                         int d100Result = random.Next(100);
-                        if (d100Result < 40) Lanes[CurrentLane][CurrentTile] = (byte)TileContent.CommonEnemy1;
-                        else if (d100Result < 80) Lanes[CurrentLane][CurrentTile] = (byte)TileContent.CommonEnemy2;
-                        else if (d100Result < 95) Lanes[CurrentLane][CurrentTile] = (byte)TileContent.UncommonEnemy;
-                        else if (d100Result < 99) Lanes[CurrentLane][CurrentTile] = (byte)TileContent.RareEnemy;
-                        else Lanes[CurrentLane][CurrentTile] = (byte)TileContent.BossEnemy;
+                        if (d100Result < 40) Lanes[CurrentLane][CurrentTile] = (byte)Utilities.TileContent.CommonEnemy1;
+                        else if (d100Result < 80) Lanes[CurrentLane][CurrentTile] = (byte)Utilities.TileContent.CommonEnemy2;
+                        else if (d100Result < 95) Lanes[CurrentLane][CurrentTile] = (byte)Utilities.TileContent.UncommonEnemy;
+                        else if (d100Result < 99) Lanes[CurrentLane][CurrentTile] = (byte)Utilities.TileContent.RareEnemy;
+                        else Lanes[CurrentLane][CurrentTile] = (byte)Utilities.TileContent.BossEnemy;
                     }
                     else //What's left is for the Collectibles. 
                     {
                         int d100Result = random.Next(100);
-                        if (d100Result < 33) Lanes[CurrentLane][CurrentTile] = (byte)TileContent.UncommonCollectible1;
-                        else if (d100Result < 66) Lanes[CurrentLane][CurrentTile] = (byte)TileContent.UncommonCollectible2;
-                        else if (d100Result < 99) Lanes[CurrentLane][CurrentTile] = (byte)TileContent.UncommonCollectible3;
+                        if (d100Result < 33) Lanes[CurrentLane][CurrentTile] = (byte)Utilities.TileContent.UncommonCollectible1;
+                        else if (d100Result < 66) Lanes[CurrentLane][CurrentTile] = (byte)Utilities.TileContent.UncommonCollectible2;
+                        else if (d100Result < 99) Lanes[CurrentLane][CurrentTile] = (byte)Utilities.TileContent.UncommonCollectible3;
                         else
                         {
                             int RarerResult = random.Next(100);
-                            if (RarerResult < 45) Lanes[CurrentLane][CurrentTile] = (byte)TileContent.RareCollectible1;
-                            else if (RarerResult < 90) Lanes[CurrentLane][CurrentTile] = (byte)TileContent.RareCollectible2;
-                            else Lanes[CurrentLane][CurrentTile] = (byte)TileContent.VeryRareCollectible;
+                            if (RarerResult < 45) Lanes[CurrentLane][CurrentTile] = (byte)Utilities.TileContent.RareCollectible1;
+                            else if (RarerResult < 90) Lanes[CurrentLane][CurrentTile] = (byte)Utilities.TileContent.RareCollectible2;
+                            else Lanes[CurrentLane][CurrentTile] = (byte)Utilities.TileContent.VeryRareCollectible;
                         }
                     }
                 }
@@ -254,20 +238,20 @@ public class LevelGenerator : Node
                     if (d10000Result > 9800)
                     {
                         int d10Result = random.Next(10);
-                        if (d10Result < 6) Lanes[CurrentLane][CurrentTile] = (byte)TileContent.HealthOrb;
-                        else if (d10Result < 9) Lanes[CurrentLane][CurrentTile] = (byte)TileContent.SpeedOrb;
+                        if (d10Result < 6) Lanes[CurrentLane][CurrentTile] = (byte)Utilities.TileContent.HealthOrb;
+                        else if (d10Result < 9) Lanes[CurrentLane][CurrentTile] = (byte)Utilities.TileContent.SpeedOrb;
                         else
                         {
                             int d100Result = random.Next(100);
-                            if (d100Result < 33) Lanes[CurrentLane][CurrentTile] = (byte)TileContent.UncommonCollectible1;
-                            else if (d100Result < 66) Lanes[CurrentLane][CurrentTile] = (byte)TileContent.UncommonCollectible2;
-                            else if (d100Result < 99) Lanes[CurrentLane][CurrentTile] = (byte)TileContent.UncommonCollectible3;
+                            if (d100Result < 33) Lanes[CurrentLane][CurrentTile] = (byte)Utilities.TileContent.UncommonCollectible1;
+                            else if (d100Result < 66) Lanes[CurrentLane][CurrentTile] = (byte)Utilities.TileContent.UncommonCollectible2;
+                            else if (d100Result < 99) Lanes[CurrentLane][CurrentTile] = (byte)Utilities.TileContent.UncommonCollectible3;
                             else
                             {
                                 int RarerResult = random.Next(100);
-                                if (RarerResult < 45) Lanes[CurrentLane][CurrentTile] = (byte)TileContent.RareCollectible1;
-                                else if (RarerResult < 90) Lanes[CurrentLane][CurrentTile] = (byte)TileContent.RareCollectible2;
-                                else Lanes[CurrentLane][CurrentTile] = (byte)TileContent.VeryRareCollectible;
+                                if (RarerResult < 45) Lanes[CurrentLane][CurrentTile] = (byte)Utilities.TileContent.RareCollectible1;
+                                else if (RarerResult < 90) Lanes[CurrentLane][CurrentTile] = (byte)Utilities.TileContent.RareCollectible2;
+                                else Lanes[CurrentLane][CurrentTile] = (byte)Utilities.TileContent.VeryRareCollectible;
                             }
                         }
                     }
