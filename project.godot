@@ -16,6 +16,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Utilities="*res://Code Logic/Utilities.cs"
+PlayerGlobals="*res://Code Logic/PlayerGlobals.gd"
 
 [gui]
 
@@ -33,6 +34,10 @@ down={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
+
+[mono]
+
+project/assembly_name="Broomstick Runner"
 
 [physics]
 
